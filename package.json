@@ -1,0 +1,31 @@
+{
+  "name": "personal-website-project",
+  "version": "1.0.0",
+  "description": "An educational tool to allow new programmers to learn node/npm and modularly create their own personal websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "server": "./node_modules/nodemon/bin/nodemon.js server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walkerspence/personal-website-project.git"
+  },
+  "author": "Walker Spence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walkerspence/personal-website-project/issues"
+  },
+  "homepage": "https://github.com/walkerspence/personal-website-project#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "esprima": "^4.0.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mocha": "^6.2.1",
+    "sinon": "^7.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
