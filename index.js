@@ -48,7 +48,7 @@ app.get('/games', (req, res) => {
 var board; 
 
 app.get('/games/tictactoe', (req, res) => {
-	board = new TicTacToe.board();
+	board = new TicTacToe.Board();
 
 	res.render('games', { layout: "application.hbs",
 						  board: board.board,

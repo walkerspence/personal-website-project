@@ -3,11 +3,25 @@ td {
   height: 100px;
   text-align: center;
   font-size: 64px;
-  font-family: 'Stint Ultra Expanded', cursive;
+  font-family: 'Stint Ultra Expanded', serif;
 }
 
 h1, h4 {
   text-align: center;
+}
+
+.section-header {
+  font-size: 94px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.game-card {
+  width: 33%; 
+}
+
+.card-body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: lightgray;
 }
 
 table {

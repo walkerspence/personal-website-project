@@ -1,8 +1,64 @@
-function game_over(board, available_moves, last_x, last_y, last_symbol) { // RETURN "x wins!", "y wins!", "draw" or false
-	/*
-	0,0 1,0 2,0
-	0,1 1,1 2,1
-	0,2 1,2 2,2
+/* coorinates on board:
+0,0 1,0 2,0
+0,1 1,1 2,1
+0,2 1,2 2,2
+*/
+function opposite_symbol(symbol) {
+	/*  inputs: symbol: either "x" or "o"
+
+		RETURN "x" if symbol == x, "o" otherwise
+    */
+	return symbol == "o" ? "x" : "o"; 
+}
+
+function three_horizontally(board, last_y, last_symbol) {
+	/*  inputs: board: a board object
+		   		last_y: the y coordinate of the last symbol placed
+		   		last_symbol: the last symbol placed (either x or o)
+
+   		RETURN true if three symbols in a row horizontally, false otherwise
+
+   		HINT: call board.get_symbol_at(x, y) to get the symbol at coordinate (x, y)
+    */
+	return (board.get_symbol_at(0, last_y) == last_symbol) && (board.get_symbol_at(1, last_y) == last_symbol) && (board.get_symbol_at(2, last_y) == last_symbol)
+}
+
+function three_vertically(board, last_x, last_symbol) {
+	/*  inputs: board: a board object
+			    last_x: the x coordinate of the last symbol placed
+			    last_symbol: the last symbol placed (either x or o)
+
+		RETURN true if three symbols in a row vertically, false otherwise
+	*/
+	return (board.get_symbol_at(last_x, 0) == last_symbol) && (board.get_symbol_at(last_x, 1) == last_symbol) && (board.get_symbol_at(last_x, 2) == last_symbol)
+}
+
+function three_diagonally_down(board, last_symbol) {
+	/*  inputs: board: a board object
+			    last_symbol: the last symbol placed (either x or o)
+
+		RETURN true if three symbols in a row diagonally down (0, 0) (1, 1) (2, 2), false otherwise
+	*/
+	return (board.get_symbol_at(0, 0) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 2) == last_symbol)
+}
+
+function three_diagonally_up(board, last_symbol) {
+	/*  inputs: board: a board object
+		    	last_symbol: the last symbol placed (either x or o)
+
+		RETURN true if three symbols in a row diagonally up (0, 2) (1, 1) (2, 0), false otherwise
+	*/
+	return (board.get_symbol_at(0, 2) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 0) == last_symbol)
+}
+
+function game_over(board, available_moves, last_x, last_y, last_symbol) { 
+	/* inputs: board: a board object
+			   available_moves: a list of available moves (available_moves.length == 0 when no moves left)
+			   last_x: the x coordinate of the last symbol placed
+			   last_y: the y coordinate of the last symbol placed
+			   last_symbol: the last symbol placed (either x or o)
+
+	   RETURN "x wins!", "y wins!", "draw" or false
 	*/
 
 	var last_move_won = false;
@@ -24,26 +80,6 @@ function game_over(board, available_moves, last_x, last_y, last_symbol) { // RET
 	} else {
 		return false;
 	}
-}
-
-function three_horizontally(board, last_y, last_symbol) {
-	return (board.get_symbol_at(0, last_y) == last_symbol) && (board.get_symbol_at(1, last_y) == last_symbol) && (board.get_symbol_at(2, last_y) == last_symbol)
-}
-
-function three_vertically(board, last_x, last_symbol) {
-	return (board.get_symbol_at(last_x, 0) == last_symbol) && (board.get_symbol_at(last_x, 1) == last_symbol) && (board.get_symbol_at(last_x, 2) == last_symbol)
-}
-
-function three_diagonally_down(board, last_symbol) {
-	return (board.get_symbol_at(0, 0) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 2) == last_symbol)
-}
-
-function three_diagonally_up(board, last_symbol) {
-	return (board.get_symbol_at(0, 2) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 0) == last_symbol)
-}
-
-function opposite_symbol(symbol) {
-	return symbol == "o" ? "x" : "o"; 
 }
 
 // RUNS GAME: 
@@ -78,14 +114,32 @@ function Board(player2_ai = false) {
 
 	this.print = function () {
 		console.log("-------------")
-		console.log(`| ${this.get_symbol_at(0, 0)} | ${this.get_symbol_at(0, 1)} | ${this.get_symbol_at(0, 2)} |`)
-		console.log(`| ${this.get_symbol_at(1, 0)} | ${this.get_symbol_at(1, 1)} | ${this.get_symbol_at(1, 2)} |`)
-		console.log(`| ${this.get_symbol_at(2, 0)} | ${this.get_symbol_at(2, 1)} | ${this.get_symbol_at(2, 2)} |`)
+		console.log(`| ${this.get_symbol_at(0, 0)} | ${this.get_symbol_at(1, 0)} | ${this.get_symbol_at(2, 0)} |`)
+		console.log(`| ${this.get_symbol_at(0, 1)} | ${this.get_symbol_at(1, 1)} | ${this.get_symbol_at(2, 1)} |`)
+		console.log(`| ${this.get_symbol_at(0, 2)} | ${this.get_symbol_at(1, 2)} | ${this.get_symbol_at(2, 2)} |`)
 		console.log("-------------")
 	}
 
-	this.empty_space_at = function (x, y) {
+	this.empty_space_at = function(x, y) {
 		return (this.board[y][x] == " ");
+	}
+
+	this.assign_column = function(symbol, x_axis) {
+		for (i = 0; i < 3; i++) {
+			this.board[i][x_axis] = symbol;
+		}
+	}
+
+	this.assign_up_diag = function(symbol) {
+		this.board[2][0] = symbol;
+		this.board[1][1] = symbol;
+		this.board[0][2] = symbol;
+	}
+
+	this.assign_down_diag = function(symbol) {
+		this.board[0][0] = symbol;
+		this.board[1][1] = symbol;
+		this.board[2][2] = symbol;
 	}
 
 	this.move_index_search = function (move) { //This function exists because there's no way to quickly compare arrays in JavaScript.
@@ -119,7 +173,13 @@ function init_available_moves() {
 }
 
 module.exports = { 
-	board: Board,
+	Board: Board,
+	game_over: game_over,
+	opposite_symbol: opposite_symbol,
+	three_horizontally: three_horizontally,
+	three_vertically: three_vertically,
+	three_diagonally_up: three_diagonally_up,
+	three_diagonally_down: three_diagonally_down,
 	game_over: game_over
 }
 
