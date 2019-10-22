@@ -1,0 +1,26 @@
+
+<h1>Tic Tac Toe</h1>
+
+<h4>{{ announcement }}</h4>
+
+<table>
+  <tr>
+    <td>{{ board.[0].[0] }}</td>
+    <td class="vert">{{ board.[0].[1] }}</td>
+    <td>{{ board.[0].[2] }}</td>
+  </tr>
+  <tr>
+    <td class="hori">{{ board.[1].[0] }}</td>
+    <td class="vert hori">{{ board.[1].[1] }}</td>
+    <td class="hori">{{ board.[1].[2] }}</td>
+  </tr>
+  <tr>
+    <td>{{ board.[2].[0] }}</td>
+    <td class="vert">{{ board.[2].[1] }}</td>
+    <td>{{ board.[2].[2] }}</td>
+  </tr>
+</table>
+
+<div class="col-12 text-center">
+	<a class="btn btn-primary" href="/games/tictactoe"> Start Over? </a>
+</div>

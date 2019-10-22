@@ -1,1 +1,26 @@
-Placeholder partial for tic tac toe
+
+<h1>Tic Tac Toe</h1>
+
+<h4>{{ announcement }}</h4>
+
+<table>
+  <tr>
+    <td><a class="cell" href="/games/tictactoe/vs/0/0">{{ board.[0].[0] }}</a></td>
+    <td class="vert"><a class="cell" href="/games/tictactoe/vs/1/0">{{ board.[0].[1] }}</a></td>
+    <td><a class="cell" href="/games/tictactoe/vs/2/0">{{ board.[0].[2] }}</a></td>
+  </tr>
+  <tr>
+    <td class="hori"><a class="cell" href="/games/tictactoe/vs/0/1">{{ board.[1].[0] }}</a></td>
+    <td class="vert hori"><a class="cell" href="/games/tictactoe/vs/1/1">{{ board.[1].[1] }}</a></td>
+    <td class="hori"><a class="cell" href="/games/tictactoe/vs/2/1">{{ board.[1].[2] }}</a></td>
+  </tr>
+  <tr>
+    <td><a class="cell" href="/games/tictactoe/vs/0/2">{{ board.[2].[0] }}</a></td>
+    <td class="vert"><a class="cell" href="/games/tictactoe/vs/1/2">{{ board.[2].[1] }}</a></td>
+    <td><a class="cell" href="/games/tictactoe/vs/2/2">{{ board.[2].[2] }}</a></td>
+  </tr>
+</table>
+
+<div class="col-12 text-center">
+	<a class="btn btn-primary" href="/games/tictactoe"> Start Over? </a>
+</div>

@@ -1,0 +1,39 @@
+td {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 64px;
+  font-family: 'Stint Ultra Expanded', cursive;
+}
+
+h1, h4 {
+  text-align: center;
+}
+
+table {
+  margin: 5px auto;
+}
+.vert {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.hori {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.cell, .cell:hover {
+  display:block; 
+  height: 100%; 
+  width: 100%;
+  text-decoration: none !important;
+  color: black;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
