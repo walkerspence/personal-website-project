@@ -19,7 +19,7 @@ app.engine( 'hbs', hbs( {
 }));
 
 const server = app.listen(3000, () => {
-	console.log(`Express running at localhost:${server.address().port}`);
+	console.log(`Express running at http://localhost:${server.address().port}`);
 });
 
 
