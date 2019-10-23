@@ -1,26 +1,35 @@
 <!doctype html>
 <html lang="en">
-	<head>
-	    <meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <link rel="stylesheet" href="/css/application.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded&display=swap">
-		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	    <title> &lt your title here &gt  </title>	
-	</head>
-	<body>
-		<div class="col-12 text-center"> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/application.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded&display=swap">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title> &lt your title here &gt </title>
+</head>
+<body>
+	{{!-- <div class="col-12 text-center"> 
 			<a href="/"> Home </a> 
 			<a href="/photos"> Photos </a> 
 			<a href="/about"> About </a> 
 			<a href="/blog"> Blog </a> 
 			<a href="/games"> Games </a> 
-		</div> 
+		</div>  --}}
+	<nav>
+		<a href="/">Home</a>
+		<a href="/about">About</a>
+		<a href="/blog">Blog</a>
+		<a href="/photos">Photos</a>
+		<a href="/games">Games</a>
+		<div class="animation start-home"></div>
+	</nav>
 
-		<div class="container-fluid">
-			{{{body}}}
-		</div>
+	<div class="container-fluid">
+		{{{body}}}
+	</div>
 
-	</body>
+</body>
 </html>
