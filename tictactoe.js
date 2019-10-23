@@ -1,7 +1,10 @@
-/* coorinates on board:
+/* 
+coorinates on board:
 0,0 1,0 2,0
 0,1 1,1 2,1
 0,2 1,2 2,2
+
+to run tests, use the terminal command "npm test test/tictactoe.js". This will run tests for all parts of the tic tac toe assignment.
 */
 function opposite_symbol(symbol) {
 	/*  inputs: symbol: either "x" or "o"
@@ -59,6 +62,9 @@ function game_over(board, available_moves, last_x, last_y, last_symbol) {
 			   last_symbol: the last symbol placed (either x or o)
 
 	   RETURN "x wins!", "y wins!", "draw" or false
+
+	   HINT: To pass this test, only call "three_diagonally_up" and "three_diagonally_down" when the last move falls on the up or down diagonal, respectively
+	   HINT: when there are no available moves left, available_moves.length == 0
 	*/
 
 	var last_move_won = false;
@@ -81,8 +87,6 @@ function game_over(board, available_moves, last_x, last_y, last_symbol) {
 		return false;
 	}
 }
-
-// RUNS GAME: 
 
 // STARTER GAME CODE:
 
