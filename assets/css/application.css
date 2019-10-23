@@ -10,6 +10,22 @@ h1, h4 {
   text-align: center;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+table {
+  margin: 5px auto;
+}
+
+.name {
+	color: black;
+}
+
 .section-header {
   font-size: 94px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -24,9 +40,12 @@ h1, h4 {
     background-color: lightgray;
 }
 
-table {
-  margin: 5px auto;
+.no-link-hover, .no-link-hover:hover {
+  color: black;
 }
+
+/* tic tac toe grid styling
+
 .vert {
   border-left: 2px solid black;
   border-right: 2px solid black;
@@ -41,19 +60,12 @@ table {
   height: 100%; 
   width: 100%;
   text-decoration: none !important;
-  color: black;
 }
+*/
 
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-}
 
 /* Navbar CSS START==============================*/
-nav {
+/*nav {
 	margin: 27px auto 0;
 	position: relative;
 	width: 500px;
@@ -136,5 +148,5 @@ nav .start-game, a:nth-child(5):hover~.animation {
 	width: 100px;
 	left: 400px;
 	background-color: #ffd369;
-}
+}*/
 /* Navbar CSS END================================*/
