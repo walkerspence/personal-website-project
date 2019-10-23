@@ -1,10 +1,12 @@
-// SERVER CONFIG
+// SERVER CONFIG -- DO NOT MODIFY THIS FILE
 
 const express = require('express')
 var bodyParser = require('body-parser');
 const app = express();
 const hbs = require('express-handlebars');
+
 const TicTacToe = require('./tictactoe.js')
+const NumberGuess = require('./numberguess.js')
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname +  "/views");
@@ -57,15 +59,14 @@ app.get('/games/tictactoe', (req, res) => {
 })
 
 app.get('/games/tictactoe/vs/:move_x/:move_y', (req, res) => {
-	var move_x = req.params.move_x;
-	var move_y = req.params.move_y;
+	var move_x = parseInt(req.params.move_x);
+	var move_y = parseInt(req.params.move_y);
 	var last_move;
 
 	if (board.empty_space_at(move_x, move_y)) {
 		move = board.make_move(move_x, move_y, board.turn);
 
-		is_game_over = TicTacToe.game_over(board, board.available_moves, move.x, move.y, board.turn)
-
+		var is_game_over = TicTacToe.game_over(board, board.available_moves, move.x, move.y, board.turn)
 		if (is_game_over) {
 			res.redirect(`/games/TicTacToe/${is_game_over}`)
 			return;
@@ -98,10 +99,37 @@ app.get('/games/connect4', (req, res) => {
 		                  whichPartial: () => { return "_games-connect4" }});
 });
 
+var number_to_guess;
+
 app.get('/games/numberguess', (req, res) => {
+	number_to_guess = Math.floor(Math.random() * 20 + 1);
+
+	console.log("Number to guess: " + number_to_guess)
+
 	res.render('games', { layout: "application.hbs", 
+						  announcement: "I'm thinking of a number between 1 and 20...",
 		                  whichPartial: () => { return "_games-numberguess" }});
 });
+
+app.get('/games/numberguess/play:guess?', (req, res) => {
+	var guess = parseInt(req.query.guess);
+	var announcement = NumberGuess.higher_or_lower(guess, number_to_guess);
+
+	if (announcement == "winner") {
+		res.redirect("/games/numberguess/win")
+		return;
+	}
+
+	res.render('games', { layout: "application.hbs", 
+					  	  announcement: announcement,
+	                  	  whichPartial: () => { return "_games-numberguess" }});
+})
+
+app.get('/games/numberguess/win', (req, res) => {
+	res.render('games', {layout: "application.hbs", 
+						 announcement: "You win!",
+						 whichPartial: () => { return "_games-numberguess-win" } })
+})
 
 app.get('/games/storyline', (req, res) => {
 	res.render('games', { layout: "application.hbs", 

@@ -22,29 +22,39 @@ table {
   margin: 5px auto;
 }
 
-.name {
-	color: black;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
+
+/* utility classes */
 
 .section-header {
   font-size: 94px;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.game-card {
-  width: 33%; 
+.card-body {
+    background-color: lightgray;
 }
 
-.card-body {
+.card-text {
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: lightgray;
+    font-size: 100%;
 }
 
 .no-link-hover, .no-link-hover:hover {
   color: black;
 }
 
-/* tic tac toe grid styling
+.square {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/* tic tac toe grid styling */
 
 .vert {
   border-left: 2px solid black;
@@ -61,8 +71,6 @@ table {
   width: 100%;
   text-decoration: none !important;
 }
-*/
-
 
 /* Navbar CSS START==============================*/
 /*nav {

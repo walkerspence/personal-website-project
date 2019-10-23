@@ -149,6 +149,12 @@ describe('Tic Tac Toe', function() {
 
 	describe('three_diagonally_up(board, symbol)', function() {
 		it('returns true if last move made three in a row diagonally up', function () {
+			board = new TicTacToe.Board();
+			board.board = [[" ", "o", "x"], ["o", "x", " "], ["x", " ", " "]]
+
+			expect(TicTacToe.three_diagonally_up(board, "x")).to.be.true; 
+
+
 			expect(TicTacToe.three_diagonally_up(test_x_diag_up, "x")).to.be.true;
 			expect(TicTacToe.three_diagonally_up(test_o_diag_up, "o")).to.be.true;
 		});
@@ -191,6 +197,12 @@ describe('Tic Tac Toe', function() {
 			expect(TicTacToe.game_over(test_o_diag_down, [[0, 0]], 0, 2, "o")).to.be.false;
 		});
 		it('returns "X wins" if last move made x win', function () {
+			board = new TicTacToe.Board();
+			board.board = [[" ", "o", "x"], ["o", "x", " "], ["x", " ", " "]]
+			expect(TicTacToe.game_over(board, [[0, 0]], 2, 0, "x")).to.equal("X wins!");
+
+
+
 			expect(TicTacToe.game_over(test_x_hori1, [[0, 0]], 1, 0, "x")).to.equal("X wins!");
 			expect(TicTacToe.game_over(test_x_hori2, [[0, 0]], 2, 1, "x")).to.equal("X wins!");
 			expect(TicTacToe.game_over(test_x_hori3, [[0, 0]], 0, 2, "x")).to.equal("X wins!");

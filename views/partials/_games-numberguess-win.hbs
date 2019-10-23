@@ -6,7 +6,7 @@
             Want to know more about background images? 
             Go to: https://www.w3schools.com/cssref/pr_background-image.asp */
   body {
-    background-image: url(/images/questionmarksbackground.png);
+    background-image: url(/images/trophy.png);
     background-color: rgba(255,255,255,0.6);
     background-blend-mode: lighten;
     background-size: cover;
@@ -20,12 +20,5 @@
 <h4>{{ announcement }}</h4>
 
 <div class="col-2 offset-5 text-center">
-	<form action="/games/numberguess/play", method="get"> 
-		<div class="input-group text-center">
-			<input name="guess" type="number" min="1" max="20"/>
-			<div class="input-group-append">
-				<button class="btn btn-secondary" type="submit">Submit</button>
-			</div>		
-		</div>
-	</form>
+	<a class="btn btn-primary" href="/games/numberguess"> Play Again </a> 
 </div>
