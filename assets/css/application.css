@@ -1,51 +1,68 @@
 td {
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  font-size: 64px;
-  font-family: 'Stint Ultra Expanded', serif;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	font-size: 64px;
+	font-family: 'Stint Ultra Expanded', serif;
+}
+
+p {
+    font-family: 'Source Sans Pro', sans-serif !important;	
+    font-weight: lighter !important;
 }
 
 h1, h4 {
-  text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;	
+	text-align: center;
+}
+
+h5 {
+	font-family: 'Source Sans Pro', sans-serif;	
 }
 
 html {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  min-height: 100%;
+	min-height: 100%;
+	padding: 30px;
 }
 
 table {
-  margin: 5px auto;
+	margin: 5px auto;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+	-webkit-appearance: none; 
+	margin: 0; 
 }
 
 /* utility classes */
 
 .section-header {
-  font-size: 94px;
-  font-family: 'Source Sans Pro', sans-serif;
+	font-size: 94px;
 }
 
-.card-body {
-    background-color: lightgray;
+.name {
+	font-size: 60px;
 }
 
 .card-text {
-    font-family: 'Source Sans Pro', sans-serif;
     font-size: 100%;
 }
 
+.card-header {
+	font-weight: bold;
+}
+
+.card {
+	margin-bottom: 30px;
+}
+
 .no-link-hover, .no-link-hover:hover {
-  color: black;
+	color: black;
 }
 
 .square {
@@ -57,30 +74,33 @@ input[type=number]::-webkit-outer-spin-button {
 /* tic tac toe grid styling */
 
 .vert {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
 }
 .hori {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
 }
 
 .cell, .cell:hover {
-  display:block; 
-  height: 100%; 
-  width: 100%;
-  text-decoration: none !important;
+	display:block; 
+	height: 100%; 
+	width: 100%;
+	text-decoration: none !important;
 }
 
+
 /* Navbar CSS START==============================*/
-/*nav {
-	margin: 27px auto 0;
+/* Navbar CSS START==============================*/
+nav {
+	margin: 0 auto 0;
 	position: relative;
 	width: 500px;
 	height: 50px;
 	background-color: #34495e;
 	border-radius: 8px;
 	font-size: 0;
+    font-family: 'Source Sans Pro', sans-serif !important;	
 }
 
 nav a {
@@ -111,23 +131,23 @@ nav .animation {
 	border-radius: 8px;
 }
 
-a:nth-child(1) {
+.nav-btn:nth-child(1) {
 	width: 100px;
 }
 
-a:nth-child(2) {
+.nav-btn:nth-child(2) {
 	width: 100px;
 }
 
-a:nth-child(3) {
+.nav-btn:nth-child(3) {
 	width: 100px;
 }
 
-a:nth-child(4) {
+.nav-btn:nth-child(4) {
 	width: 100px;
 }
 
-a:nth-child(5) {
+.nav-btn:nth-child(5) {
 	width: 100px;
 }
 
@@ -156,5 +176,5 @@ nav .start-game, a:nth-child(5):hover~.animation {
 	width: 100px;
 	left: 400px;
 	background-color: #ffd369;
-}*/
-/* Navbar CSS END================================*/
+}
+/* Navbar CSS END================================*/ 

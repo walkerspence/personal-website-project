@@ -102,10 +102,6 @@ function Board(player2_ai = false) {
 		this.turn = opposite_symbol(this.turn);
 	}
 
-	this.end_game = function (move) {
-		return game_over(this.board, this.available_moves, move.x, move.y, opposite_symbol(this.turn.symbol))
-	}
-
     this.get_symbol_at = function (x, y) { 
     	return (this.empty_space_at(x, y)) ? " " : this.board[y][x] 
     }
