@@ -54,7 +54,7 @@ function three_diagonally_up(board, last_symbol) {
 	return (board.get_symbol_at(0, 2) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 0) == last_symbol)
 }
 
-function game_over(board, available_moves, last_x, last_y, last_symbol) { 
+function game_over(board, no_moves_left, last_x, last_y, last_symbol) { 
 	/* inputs: board: a board object
 			   available_moves: a list of available moves (available_moves.length == 0 when no moves left)
 			   last_x: the x coordinate of the last symbol placed
@@ -65,7 +65,6 @@ function game_over(board, available_moves, last_x, last_y, last_symbol) {
 	   		  "Draw!" if no available moves left or false if the game should continue
 
 	   HINT: To pass this test, only call "three_diagonally_up" and "three_diagonally_down" when the last move falls on the up or down diagonal, respectively
-	   HINT: when there are no available moves left, available_moves.length == 0
 	*/
 
 	var last_move_won = false;
@@ -82,7 +81,7 @@ function game_over(board, available_moves, last_x, last_y, last_symbol) {
 
 	if (last_move_won) {
 		return last_symbol.toUpperCase() + " wins!";
-	} else if (!available_moves.length) {
+	} else if (no_moves_left) {
 		return "Draw!";
 	} else {
 		return false;

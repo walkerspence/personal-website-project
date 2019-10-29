@@ -4,6 +4,8 @@ var should = require('chai').should();
 var sinon = require('sinon');
 
 var TicTacToe = require('../tictactoe.js');
+// test solutions
+// var TicTacToe = require('../solutions/functions2_solutions.js');
 
 describe('Tic Tac Toe', function() {
 	var test_x_hori1;
@@ -183,75 +185,73 @@ describe('Tic Tac Toe', function() {
 
     describe('game_over(board, available_moves, last_x, last_y, last_symbol)', function() {
 		it('calls three_diagonally_up when last_x + last_y == 2', function () {
-			expect(TicTacToe.game_over(test_x_diag_up, [[0, 0]], 0, 0, "x")).to.be.false;
-			expect(TicTacToe.game_over(test_o_diag_up, [[0, 0]], 2, 2, "o")).to.be.false;
+			expect(TicTacToe.game_over(test_x_diag_up, ![[0, 0]].length, 0, 0, "x")).to.be.false;
+			expect(TicTacToe.game_over(test_o_diag_up, ![[0, 0]].length, 2, 2, "o")).to.be.false;
 
-			expect(TicTacToe.game_over(test_x_diag_up, [[0, 0]], 1, 1, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_o_diag_up, [[0, 0]], 0, 2, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_x_diag_up, ![[0, 0]].length, 1, 1, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_o_diag_up, ![[0, 0]].length, 0, 2, "o")).to.equal("O wins!");
 		})
 		it('calls three_diagonally_up when last_x == last_y', function () {
-			expect(TicTacToe.game_over(test_x_diag_down, [[0, 0]], 0, 0, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_o_diag_down, [[0, 0]], 2, 2, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_x_diag_down, ![[0, 0]].length, 0, 0, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_o_diag_down, ![[0, 0]].length, 2, 2, "o")).to.equal("O wins!");
 
-			expect(TicTacToe.game_over(test_x_diag_down, [[0, 0]], 2, 0, "x")).to.be.false;
-			expect(TicTacToe.game_over(test_o_diag_down, [[0, 0]], 0, 2, "o")).to.be.false;
+			expect(TicTacToe.game_over(test_x_diag_down, ![[0, 0]].length, 2, 0, "x")).to.be.false;
+			expect(TicTacToe.game_over(test_o_diag_down, ![[0, 0]].length, 0, 2, "o")).to.be.false;
 		});
 		it('returns "X wins" if last move made x win', function () {
 			board = new TicTacToe.Board();
 			board.board = [[" ", "o", "x"], ["o", "x", " "], ["x", " ", " "]]
-			expect(TicTacToe.game_over(board, [[0, 0]], 2, 0, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(board, ![[0, 0]].length, 2, 0, "x")).to.equal("X wins!");
 
+			expect(TicTacToe.game_over(test_x_hori1, ![[0, 0]].length, 1, 0, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_hori2, ![[0, 0]].length, 2, 1, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_hori3, ![[0, 0]].length, 0, 2, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_vert1, ![[0, 0]].length, 0, 2, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_vert2, ![[0, 0]].length, 1, 0, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_vert3, ![[0, 0]].length, 2, 1, "x")).to.equal("X wins!");
 
+			expect(TicTacToe.game_over(test_x_diag_up, ![[0, 0]].length, 1, 1, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_diag_up, ![[0, 0]].length, 0, 2, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_diag_up, ![[0, 0]].length, 2, 0, "x")).to.equal("X wins!");
 
-			expect(TicTacToe.game_over(test_x_hori1, [[0, 0]], 1, 0, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_hori2, [[0, 0]], 2, 1, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_hori3, [[0, 0]], 0, 2, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_vert1, [[0, 0]], 0, 2, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_vert2, [[0, 0]], 1, 0, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_vert3, [[0, 0]], 2, 1, "x")).to.equal("X wins!");
-
-			expect(TicTacToe.game_over(test_x_diag_up, [[0, 0]], 1, 1, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_diag_up, [[0, 0]], 0, 2, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_diag_up, [[0, 0]], 2, 0, "x")).to.equal("X wins!");
-
-			expect(TicTacToe.game_over(test_x_diag_down, [[0, 0]], 1, 1, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_diag_down, [[0, 0]], 0, 0, "x")).to.equal("X wins!");
-			expect(TicTacToe.game_over(test_x_diag_down, [[0, 0]], 2, 2, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_diag_down, ![[0, 0]].length, 1, 1, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_diag_down, ![[0, 0]].length, 0, 0, "x")).to.equal("X wins!");
+			expect(TicTacToe.game_over(test_x_diag_down, ![[0, 0]].length, 2, 2, "x")).to.equal("X wins!");
 		});
 		it('returns "O wins" if last move made o win', function () {
-			expect(TicTacToe.game_over(test_o_hori1, [[0, 0]], 1, 0, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_hori2, [[0, 0]], 2, 1, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_hori3, [[0, 0]], 0, 2, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_vert1, [[0, 0]], 0, 2, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_vert2, [[0, 0]], 1, 0, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_vert3, [[0, 0]], 2, 1, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_hori1, ![[0, 0]].length, 1, 0, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_hori2, ![[0, 0]].length, 2, 1, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_hori3, ![[0, 0]].length, 0, 2, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_vert1, ![[0, 0]].length, 0, 2, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_vert2, ![[0, 0]].length, 1, 0, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_vert3, ![[0, 0]].length, 2, 1, "o")).to.equal("O wins!");
 
-			expect(TicTacToe.game_over(test_o_diag_up, [[0, 0]], 1, 1, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_diag_up, [[0, 0]], 0, 2, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_diag_up, [[0, 0]], 2, 0, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_diag_up, ![[0, 0]].length, 1, 1, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_diag_up, ![[0, 0]].length, 0, 2, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_diag_up, ![[0, 0]].length, 2, 0, "o")).to.equal("O wins!");
 
-			expect(TicTacToe.game_over(test_o_diag_down, [[0, 0]], 1, 1, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_diag_down, [[0, 0]], 0, 0, "o")).to.equal("O wins!");
-			expect(TicTacToe.game_over(test_o_diag_down, [[0, 0]], 2, 2, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_diag_down, ![[0, 0]].length, 1, 1, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_diag_down, ![[0, 0]].length, 0, 0, "o")).to.equal("O wins!");
+			expect(TicTacToe.game_over(test_o_diag_down, ![[0, 0]].length, 2, 2, "o")).to.equal("O wins!");
 		});
 
 		it('returns "Draw" if no moves are left and last move did not win', function () {
-			expect(TicTacToe.game_over(test_full, [], 1, 0, "x")).to.equal("Draw!");
-			expect(TicTacToe.game_over(test_x_diag_up, [], 0, 0, "x")).to.equal("Draw!");
-			expect(TicTacToe.game_over(test_x_diag_down, [], 2, 0, "x")).to.equal("Draw!");
-			expect(TicTacToe.game_over(test_x_hori1, [], 1, 1, "x")).to.equal("Draw!");
-			expect(TicTacToe.game_over(test_x_diag_up, [], 0, 0, "x")).to.equal("Draw!")
-			expect(TicTacToe.game_over(test_x_diag_down, [], 2, 0, "x")).to.equal("Draw!")
-			expect(TicTacToe.game_over(test_o_hori1, [], 2, 2, "o")).to.equal("Draw!")
-			expect(TicTacToe.game_over(test_o_diag_up, [], 2, 2, "o")).to.equal("Draw!")
-			expect(TicTacToe.game_over(test_o_diag_down, [], 0, 2, "o")).to.equal("Draw!")
-			expect(TicTacToe.game_over(test_empty, [], 1, 0, "x")).to.equal("Draw!")
-			expect(TicTacToe.game_over(test_some, [], 0, 0, "x")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_full, ![].length, 1, 0, "x")).to.equal("Draw!");
+			expect(TicTacToe.game_over(test_x_diag_up, ![].length, 0, 0, "x")).to.equal("Draw!");
+			expect(TicTacToe.game_over(test_x_diag_down, ![].length, 2, 0, "x")).to.equal("Draw!");
+			expect(TicTacToe.game_over(test_x_hori1, ![].length, 1, 1, "x")).to.equal("Draw!");
+			expect(TicTacToe.game_over(test_x_diag_up, ![].length, 0, 0, "x")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_x_diag_down, ![].length, 2, 0, "x")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_o_hori1, ![].length, 2, 2, "o")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_o_diag_up, ![].length, 2, 2, "o")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_o_diag_down, ![].length, 0, 2, "o")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_empty, ![].length, 1, 0, "x")).to.equal("Draw!")
+			expect(TicTacToe.game_over(test_some, ![].length, 0, 0, "x")).to.equal("Draw!")
 		});
 
 		it('returns false when no end game state is reached', function () {
-			expect(TicTacToe.game_over(test_empty, [[0, 0]], 1, 0, "x")).to.be.false;
-			expect(TicTacToe.game_over(test_some, [[0, 0]], 1, 0, "x")).to.be.false;
+			expect(TicTacToe.game_over(test_empty, ![[0, 0]].length, 1, 0, "x")).to.be.false;
+			expect(TicTacToe.game_over(test_some, ![[0, 0]].length, 1, 0, "x")).to.be.false;
 		});
     });
 });
