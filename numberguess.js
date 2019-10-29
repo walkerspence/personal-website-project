@@ -8,15 +8,6 @@ function higher_or_lower(guess, number_to_guess) {
 
    	   returns: "higher" if number_to_guess is higher than guess, "winner" if number_to_guess is exactly guess,  and "lower" otherwise
 	*/
-
-
-	if (number_to_guess > guess) {
-		return "higher";
-	} else if (number_to_guess === guess) {
-		return "winner";
-	} else {
-		return "lower";
-	}
 }
 
 module.exports = { higher_or_lower: higher_or_lower }

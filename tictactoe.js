@@ -11,7 +11,6 @@ function opposite_symbol(symbol) {
 
 		RETURN "x" if symbol == x, "o" otherwise
     */
-	return symbol == "o" ? "x" : "o"; 
 }
 
 function three_horizontally(board, last_y, last_symbol) {
@@ -23,7 +22,6 @@ function three_horizontally(board, last_y, last_symbol) {
 
    		HINT: call board.get_symbol_at(x, y) to get the symbol at coordinate (x, y)
     */
-	return (board.get_symbol_at(0, last_y) == last_symbol) && (board.get_symbol_at(1, last_y) == last_symbol) && (board.get_symbol_at(2, last_y) == last_symbol)
 }
 
 function three_vertically(board, last_x, last_symbol) {
@@ -33,7 +31,6 @@ function three_vertically(board, last_x, last_symbol) {
 
 		RETURN true if three symbols in a row vertically, false otherwise
 	*/
-	return (board.get_symbol_at(last_x, 0) == last_symbol) && (board.get_symbol_at(last_x, 1) == last_symbol) && (board.get_symbol_at(last_x, 2) == last_symbol)
 }
 
 function three_diagonally_down(board, last_symbol) {
@@ -42,7 +39,6 @@ function three_diagonally_down(board, last_symbol) {
 
 		RETURN true if three symbols in a row diagonally down (0, 0) (1, 1) (2, 2), false otherwise
 	*/
-	return (board.get_symbol_at(0, 0) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 2) == last_symbol)
 }
 
 function three_diagonally_up(board, last_symbol) {
@@ -51,7 +47,6 @@ function three_diagonally_up(board, last_symbol) {
 
 		RETURN true if three symbols in a row diagonally up (0, 2) (1, 1) (2, 0), false otherwise
 	*/
-	return (board.get_symbol_at(0, 2) == last_symbol) && (board.get_symbol_at(1, 1) == last_symbol) && (board.get_symbol_at(2, 0) == last_symbol)
 }
 
 function game_over(board, no_moves_left, last_x, last_y, last_symbol) { 
@@ -67,25 +62,6 @@ function game_over(board, no_moves_left, last_x, last_y, last_symbol) {
 	   HINT: To pass this test, only call "three_diagonally_up" and "three_diagonally_down" when the last move falls on the up or down diagonal, respectively
 	*/
 
-	var last_move_won = false;
-
-	if (last_x == last_y) {
-		last_move_won |= three_diagonally_down(board, last_symbol);
-	} 
-
-	if (last_x + last_y == 2) {
-		last_move_won |= three_diagonally_up(board, last_symbol);
-	} 
-
-	last_move_won |= three_horizontally(board, last_y, last_symbol) || three_vertically(board, last_x, last_symbol); 
-
-	if (last_move_won) {
-		return last_symbol.toUpperCase() + " wins!";
-	} else if (no_moves_left) {
-		return "Draw!";
-	} else {
-		return false;
-	}
 }
 
 // STARTER GAME CODE:
